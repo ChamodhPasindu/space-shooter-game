@@ -1,0 +1,152 @@
+body{
+    background-image: url("../img/planet.jpg");
+    background-size: 130vw;
+    background-position: 100% 0%;
+
+}
+
+#rocket{
+    width: 12vw;
+    height: 8vw;
+    transform: rotate(180deg);
+}
+
+#rocket-back{
+    position: absolute;
+    height: 8vw;
+    width: 12vw;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+
+    animation-name: up-down;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+}
+@keyframes up-down {
+    from{
+
+    }
+    to{
+        bottom: 10px;
+    }
+}
+
+#score{
+    background-color: black;
+    color: white;
+    width: 8vw;
+    height: 5vw;
+    z-index: 100;
+
+    position: absolute;
+    right: 1vw;
+    top: 1vw;
+    margin: auto;
+}
+
+.text{
+    text-align: center;
+    font-size: 1.8vw;
+}
+
+#laser{
+    transform: rotate(270deg);
+    width: 5vw;
+    height: 2vw;
+}
+
+#enemy-back{
+    position: absolute;
+    height: 8vw;
+    width: 12vw;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: auto;
+
+    animation-name: rotate-enemy;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-duration:10s;
+
+}
+
+@keyframes rotate-enemy {
+    from{
+
+    }
+    to{
+        transform:rotate(60deg);
+    }
+}
+#enemy{
+    width: 8vw;
+    height: 5vw;
+    transform: rotate(180deg);
+}
+
+#asteroid-back{
+    position: absolute;
+    height: 8vw;
+    width: 12vw;
+    right: 100px;
+    top: 0;
+    margin: auto;
+
+    animation-name: rotate-asteroid;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-duration:20s;
+
+}
+
+@keyframes rotate-asteroid {
+    from{
+
+    }
+    to{
+        transform:rotate(180deg);
+    }
+}
+#asteroid{
+    width: 5vw;
+    height: 4vw;
+    transform: rotate(180deg);
+}
+
+.game-menu{
+    background-color: black;
+    color: white;
+    width: 30vw;
+    height: 20vw;
+    z-index: 150;
+    border-radius: 5%;
+    border: solid 1px white;
+
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+.title{
+    font-size: 5vw;
+    text-align: center;
+}
+
+.score-text{
+    font-size: 2.5vw;
+    text-align: center;
+
+}
+
+#game-over-menu{
+    display: none;
+}
+#game-start-menu{
+    display: none;
+}
