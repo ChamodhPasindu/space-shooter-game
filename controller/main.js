@@ -4,6 +4,10 @@ $("#btn-start").click(function () {
     startGame();
 });
 
+$("#btn-try-again").click(function () {
+    window.location.reload();
+});
+
 function startGame() {
     $("#game-start-menu").css("display", "none");
     $("#score").css("display", "block");
@@ -23,30 +27,34 @@ function startGame() {
             shootLaser(laser, left);
         }
     });
-
-
 }
 
 function createEnemy() {
+    var dir='../assets/img/'
+    var img=['asteroid.png','enemy.png','spaceship.png'];
     var createEnemy = setInterval(() => {
+        var randomImg=Math.floor(Math.random()*3);
         var enemy = $('<div>', {class: "enemy-back"}).get(0);
-        var enemyLeft = parseInt(window.getComputedStyle(enemy).getPropertyValue("left"));
-        enemy.style.left = Math.floor(Math.random() * 1200) + 200 + "px";
-        space.appendChild(enemy)
+        enemy.setAttribute("style","background-image: url(" + dir + img[randomImg])
+        enemy.style.left = Math.floor(Math.random() * (85-15)+15)+ "%";
+        console.log(enemy.style.left);
+        space.append(enemy)
     }, 2500);
 
-    moveEnemy();
-
+    moveEnemy(createEnemy);
 }
 
-function moveEnemy() {
+function moveEnemy(createEnemy) {
     var moveEnemies = setInterval(() => {
         var enemies = $(".enemy-back").get();
+
         if (enemies !== undefined) {
             for (var i = 0; i < enemies.length; i++) {
                 var enemy = enemies[i];
                 var enemyTop = parseInt(window.getComputedStyle(enemy).getPropertyValue("top"));
+
                 enemy.style.top = enemyTop + 5 + "px";
+                isGameOver(enemy,moveEnemies,createEnemy);
             }
         }
     }, 50);
@@ -54,7 +62,7 @@ function moveEnemy() {
 
 function createLaser() {
     const laser = $('<div>', {class: "lasers"}).get(0);
-    space.appendChild(laser);
+    space.append(laser);
     laser.style.display = "none";
     return laser;
 }
@@ -68,6 +76,10 @@ function shootLaser(laser, left) {
         laser.style.left = left + -2 + "px";
         laser.style.bottom = laserBottom + 10 + "px";
         laser.style.display = "block";
+
+        if (parseInt(laser.style.bottom) >= 900) {
+            laser.remove();
+        }
     }, 50);
 }
 
@@ -104,9 +116,27 @@ function makeExplosion(enemy) {
     explosion.style.right = enemy.style.right;
     explosion.style.top = enemy.style.top;
     explosion.style.bottom = enemy.style.bottom - 10 + "px";
-    space.appendChild(explosion);
+    space.append(explosion);
 
     setTimeout(function () {
         explosion.remove();
     }, 1000);
+}
+
+function isGameOver(enemy,moveEnemies,createEnemy) {
+    var rocketPosition = $("#rocket-back").get(0).getBoundingClientRect();
+    var enemyPosition = enemy.getBoundingClientRect();
+
+    var enemyTop = parseInt(window.getComputedStyle(enemy).getPropertyValue("top"));
+
+    if (rocketPosition.top <= enemyPosition.top && rocketPosition.bottom <= enemyPosition.bottom) {
+        $("#game-over-menu").css("display", "block");
+        clearInterval(moveEnemies);
+        clearInterval(createEnemy);
+        gameOver();
+    }
+}
+
+function gameOver() {
+    $("#final-score").text($("#score-point").text())
 }

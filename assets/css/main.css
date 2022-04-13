@@ -1,20 +1,18 @@
-body{
+body {
     background-image: url("../img/planet.jpg");
     background-size: 130vw;
-    background-position: 100% 0%;
+    background-position: 100% 0;
     overflow: hidden;
-
 }
 
-#rocket{
+#rocket {
     width: 12vw;
     height: 8vw;
     transform: rotate(180deg);
     z-index: 200;
-
 }
 
-#rocket-back{
+#rocket-back {
     position: absolute;
     height: 8vw;
     width: 12vw;
@@ -28,16 +26,17 @@ body{
     animation-iteration-count: infinite;
     animation-duration: 2s;
 }
+
 @keyframes up-down {
-    from{
+    from {
 
     }
-    to{
+    to {
         bottom: 10px;
     }
 }
 
-#score{
+#score {
     background-color: black;
     color: white;
     width: 8vw;
@@ -51,14 +50,14 @@ body{
     margin: auto;
 }
 
-.text{
+.text {
     text-align: center;
     font-size: 1.8vw;
 }
 
-.lasers{
+.lasers {
     position: absolute;
-   left: 0;
+    left: 0;
     right: 0;
     margin: auto;
     bottom: 5.2vw;
@@ -66,40 +65,35 @@ body{
     height: 2vw;
     background: url("../img/laser.png");
     transform: rotate(270deg);
-    background-size: cover ;
+    background-size: cover;
 
 }
 
-.enemy-back{
+.enemy-back {
     position: absolute;
     height: 5vw;
     width: 5vw;
-
-    background-image: url("../img/enemy.png");
+    top: 0;
     background-size: cover;
     transform: rotate(150deg);
 
     animation-name: rotate-enemy;
     animation-direction: alternate;
     animation-iteration-count: infinite;
-    animation-duration:10s;
+    animation-duration: 10s;
 }
+
 
 @keyframes rotate-enemy {
-    from{
+    from {
 
     }
-    to{
-        transform:rotate(200deg);
+    to {
+        transform: rotate(200deg);
     }
 }
-.enemy{
-    position: absolute;
-    width: 8vw;
-    height: 5vw;
-}
 
-#asteroid-back{
+#asteroid-back {
     position: absolute;
     height: 8vw;
     width: 12vw;
@@ -110,20 +104,20 @@ body{
     animation-name: rotate-asteroid;
     animation-direction: alternate;
     animation-iteration-count: infinite;
-    animation-duration:20s;
+    animation-duration: 20s;
 
 }
 
 @keyframes rotate-asteroid {
-    from{
+    from {
 
     }
-    to{
-        transform:rotate(180deg);
+    to {
+        transform: rotate(180deg);
     }
 }
 
-.explosion{
+.explosion {
     position: absolute;
     height: 5vw;
     width: 5vw;
@@ -132,32 +126,26 @@ body{
     background-size: cover;
     animation-name: explode-enemy;
     animation-iteration-count: 1;
-    animation-duration:2s;
+    animation-duration: 2s;
 }
 
 @keyframes explode-enemy {
-    from{
+    from {
 
     }
-    to{
-        transform:rotate(180deg);
+    to {
+        transform: rotate(180deg);
     }
 }
 
-#asteroid{
-    width: 5vw;
-    height: 4vw;
-    transform: rotate(180deg);
-}
-
-.game-menu{
+.game-menu {
     background-color: black;
     color: white;
     width: 30vw;
     height: 20vw;
     z-index: 150;
     border-radius: 5%;
-    border: solid 1px white;
+    border: solid 2px white;
 
     position: absolute;
     right: 0;
@@ -166,20 +154,21 @@ body{
     left: 0;
     margin: auto;
 }
-.title{
+
+.title {
     font-size: 5vw;
     text-align: center;
 }
 
-.score-text{
+.score-text {
     font-size: 2.5vw;
     text-align: center;
-
 }
 
-#game-over-menu{
+#game-over-menu {
     display: none;
 }
-#game-start-menu{
+
+#game-start-menu {
     display: block;
 }
