@@ -30,14 +30,13 @@ function startGame() {
 }
 
 function createEnemy() {
-    var dir='../assets/img/'
-    var img=['asteroid.png','enemy.png','spaceship.png'];
+    var dir = '../assets/img/'
+    var img = ['asteroid.png', 'enemy.png', 'spaceship.png'];
     var createEnemy = setInterval(() => {
-        var randomImg=Math.floor(Math.random()*3);
+        var randomImg = Math.floor(Math.random() * 3);
         var enemy = $('<div>', {class: "enemy-back"}).get(0);
-        enemy.setAttribute("style","background-image: url(" + dir + img[randomImg])
-        enemy.style.left = Math.floor(Math.random() * (85-15)+15)+ "%";
-        console.log(enemy.style.left);
+        enemy.setAttribute("style", "background-image: url(" + dir + img[randomImg])
+        enemy.style.left = Math.floor(Math.random() * (85 - 15) + 15) + "%";
         space.append(enemy)
     }, 2500);
 
@@ -54,7 +53,7 @@ function moveEnemy(createEnemy) {
                 var enemyTop = parseInt(window.getComputedStyle(enemy).getPropertyValue("top"));
 
                 enemy.style.top = enemyTop + 5 + "px";
-                isGameOver(enemy,moveEnemies,createEnemy);
+                isGameOver(enemy, moveEnemies, createEnemy);
             }
         }
     }, 50);
@@ -96,18 +95,11 @@ function checkExplosion(laser) {
             laserPosition.top - 50 <= enemyPosition.top && laserPosition.bottom <= enemyPosition.bottom) {
 
             makeExplosion(enemy);
+            generateScore();
             enemy.remove();
             laser.remove();
-
-            generateScore();
         }
     }
-}
-
-function generateScore() {
-    var score = $("#score-point").text();
-    var newScore = (+score) + (+10);
-    $("#score-point").text(newScore);
 }
 
 function makeExplosion(enemy) {
@@ -123,14 +115,17 @@ function makeExplosion(enemy) {
     }, 1000);
 }
 
-function isGameOver(enemy,moveEnemies,createEnemy) {
+function generateScore() {
+    var score = $("#score-point").text();
+    var newScore = (+score) + (+10);
+    $("#score-point").text(newScore);
+}
+
+function isGameOver(enemy, moveEnemies, createEnemy) {
     var rocketPosition = $("#rocket-back").get(0).getBoundingClientRect();
     var enemyPosition = enemy.getBoundingClientRect();
 
-    var enemyTop = parseInt(window.getComputedStyle(enemy).getPropertyValue("top"));
-
     if (rocketPosition.top <= enemyPosition.top && rocketPosition.bottom <= enemyPosition.bottom) {
-        $("#game-over-menu").css("display", "block");
         clearInterval(moveEnemies);
         clearInterval(createEnemy);
         gameOver();
@@ -138,5 +133,6 @@ function isGameOver(enemy,moveEnemies,createEnemy) {
 }
 
 function gameOver() {
-    $("#final-score").text($("#score-point").text())
+    $("#game-over-menu").css("display", "block");
+    $("#final-score").text($("#score-point").text());
 }
