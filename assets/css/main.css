@@ -74,6 +74,7 @@ body {
     height: 5vw;
     width: 5vw;
     top: 0;
+    background-image: url("../img/enemy.png");
     background-size: cover;
     transform: rotate(150deg);
 

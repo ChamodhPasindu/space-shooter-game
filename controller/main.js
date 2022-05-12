@@ -46,7 +46,7 @@ function createEnemy() {
 
         /*create div element dynamically and add ".enemy-back" css while interval*/
         var enemy = $('<div>', {class: "enemy-back"}).get(0);
-        enemy.setAttribute("style", "background-image: url(" + dir + img[randomImg])
+        // enemy.setAttribute("style", "background-image: url(" + dir + img[randomImg])
         enemy.style.left = Math.floor(Math.random() * (85 - 15) + 15) + "%";
         space.append(enemy)
     }, 2500);
