@@ -37,7 +37,7 @@ function startGame() {
 }
 
 function createEnemy() {
-    var dir = '../assets/img/'
+    var dir = '/assets/img/'
     var img = ['asteroid.png', 'enemy.png', 'spaceship.png'];
     var createEnemy = setInterval(() => {
 
