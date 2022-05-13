@@ -1,6 +1,6 @@
 
 ## Space Shooter Game
-#### [Click Here](https://github.com/ChamodhPasindu/space-shooter-game) to play this game through web browser.
+#### [Click Here](https://chamodhpasindu.github.io/space-shooter-game/) to play this game through web browser.
 
 ## Screenshot
 ![Image of MyProfile](assets/img/game-screenshot.png)
